@@ -1,4 +1,5 @@
 version: 2
+
 jobs:
   build1:
     working_directory: /go/src/github.com/wsgk/Docker-circleci-test
@@ -18,3 +19,11 @@ jobs:
       - image: mercari/appengine-go
     steps:
       - checkout
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build1
+      - build2
+      - build3
