@@ -13,6 +13,13 @@ jobs:
       - image: vvakame/circleci-gaego
     steps:
       - checkout
+  build2_ssh:
+    working_directory: /go/src/github.com/wsgk/Docker-circleci-test
+    docker:
+      - image: vvakame/circleci-gaego
+    steps:
+      - run: apt-get update && apt-get -y install ssh
+      - checkout
   build3:
     working_directory: /go/src/github.com/wsgk/Docker-circleci-test
     docker:
@@ -26,4 +33,5 @@ workflows:
     jobs:
       - build1
       - build2
+      - build2_ssh
       - build3
